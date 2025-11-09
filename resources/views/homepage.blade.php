@@ -1,30 +1,17 @@
-@extends("layout.layout")
+@extends("layouts.layout")
 @section("title", "Home Page")
 
 
 @section('content')
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand" href="#page-top"><img src="{{ asset('assets/img/navb-logo.png') }}" alt="Site Logo" /></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars ms-1"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+
+@extends('partials.navigation')
+
+
+
     <header class="masthead">
         <div class="container">
             <div class="masthead-subheading">Serve The Lord</div>
-            <div class="masthead-heading text-uppercase">In Everyday Clothes</div>
+            <div class="masthead-heading text-uppercase">Unseen Clothes</div>
             <a class="btn btn-primary btn-xl text-uppercase" href="#about">Discover Our Story</a>
         </div>
     </header>
@@ -36,7 +23,8 @@
             <h3 class="section-subheading text-muted">Best Selling Products of All Time.</h3>
         </div>
         <div class="row">
-            @foreach($products as $product)
+
+            @forelse($products as $product)
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="portfolio-item">
                     <a class="portfolio-link" data-bs-toggle="modal" href="#productModal{{ $product->id }}">
@@ -48,9 +36,14 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+                <div class="col-12 text-center">
+                    <p class="text-muted">Produk unggulan akan segera hadir.</p>
+                </div>
+            @endforelse
+            
             <div class="col-12 text-center mt-4">
-                <a class="btn btn-primary btn-xl text-uppercase" href="/products">More Products</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="{{ route('products.index') }}">More Products</a>
             </div>
         </div>
     </div>
@@ -113,40 +106,29 @@
                 <h2 class="section-heading text-uppercase">Our Amazing Customer</h2>
                 <h3 class="section-subheading text-muted">The people who make our story possible.</h3>
             </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
-                        <h4>{{$reviews[0]->user->name}}'s</h4>
-                        <div class="mt-2">
-                            <h3>Review</h3>
-                            <p class="text-muted">{{$reviews[0]-> rating}}/10</p>
-                            <p class="text-muted">{{$reviews[0]-> review}}</p>
+            <div class="row justify-content-center">
+                
+                @forelse ($reviews as $index => $review)
+                    @if ($index < 3) 
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="{{ asset('assets/img/team/' . ($index + 1) . '.jpg') }}" alt="{{ $review->user->name ?? 'Reviewer' }}" />
+                            
+                            <h4>{{ $review->user->name ?? 'Reviewer' }}'s</h4>
+                            <div class="mt-2">
+                                <h3>Review</h3>
+                                <p class="text-muted">{{ $review->rating ?? 'N/A' }}/10</p>
+                                <p class="text-muted">"{{ $review->review }}"</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
-                        <h4>{{$reviews[1]->user-> name}}'s</h4>
-                        <div class="mt-2">
-                            <h3>Review</h3>
-                            <p class="text-muted">{{$reviews[1]-> rating}}/10</p>
-                            <p class="text-muted">{{$reviews[1]-> review}}</p>
-                        </div>
+                    @endif
+                @empty
+                    <div class="col-lg-8 text-center">
+                        <p class="large text-muted">Belum ada testimonial untuk ditampilkan saat ini.</p>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
-                        <h4>{{$reviews[2]->user-> name}}'s</h4>
-                        <div class="mt-2">
-                            <h3>Review</h3>
-                            <p class="text-muted">{{$reviews[2]-> rating}}/10</p>
-                            <p class="text-muted">{{$reviews[2]-> review}}</p>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
+
             </div>
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Ready to be the next success story? Let's turn your vision into a measurable impact. Partner with us today and let's define the next chapter of your personal's growth</p></div>
@@ -154,4 +136,3 @@
         </div>
     </section>
 @endsection
-    

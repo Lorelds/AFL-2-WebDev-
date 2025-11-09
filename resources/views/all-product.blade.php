@@ -1,11 +1,16 @@
-@extends("layout.layout")
+@extends("layouts.layout")
 @section('title', "All - Product")
 @section('content')
+
+<div class ="container mb-4">
+@include('partials.navigation')
+</div>
+
 
     <section class="page-section bg-light " id="all-products">
         <div class="container">
             <div class="text-start">
-                <a href = "/" class="btn btn-primary btn-xl text-uppercase mb-4"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                <a href = "/" class="btn btn-primary btn-xl text-uppercase mb-4 mt-5"><i class="fas fa-arrow-left"></i> Back to Home</a>
             </div>
 
         </div>

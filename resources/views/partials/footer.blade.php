@@ -17,8 +17,8 @@
         <script src="{{ asset('js/script.js') }}"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <link href="../css/styles.css" rel="stylesheet" />
- </head>
- 
+</head>
+
 <footer class="footer py-4">
     <div class="container">
         <div class="row align-items-center">

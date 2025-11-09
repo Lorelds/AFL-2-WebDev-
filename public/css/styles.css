@@ -4232,6 +4232,7 @@ textarea.form-control-lg {
   background-color: var(--bs-card-cap-bg);
   border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
 }
+
 .card-header:first-child {
   border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0;
 }
@@ -7617,6 +7618,10 @@ textarea.form-control-lg {
 
 .mt-5 {
   margin-top: 3rem !important;
+}
+
+.mt-6 {
+  margin-top: 5rem !important;
 }
 
 .mt-auto {
@@ -11340,4 +11345,71 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 #all-products .pagination-sm .page-link i {
   font-size: 1rem; 
+}
+.nav-tabs .nav-link {
+    color: #495057;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    margin-right: 4px;
+    padding: 8px 16px;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #212529;
+    background-color: #e9ecef;
+}
+
+.nav-tabs .nav-link.active {
+    color: #000;
+    background-color: #fff;
+    border-bottom-color: transparent;
+    font-weight: 500;
+}
+
+.card-body form {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.card-body .form-group {
+    margin-bottom: 1rem;
+}
+
+.card-body .form-control {
+    width: 100%;
+}
+
+.btn-save {
+    background-color: #ffc800;
+    border-color: #ffc800;
+    color: #000;
+    font-weight: 500;
+    padding: 8px 24px;
+}
+
+.btn-save:hover {
+    background-color: #e6b400;
+    border-color: #e6b400;
+    color: #000;
+}
+
+/* Reduce whitespace */
+.page-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Tab content padding */
+.tab-content {
+    padding-top: 1.5rem;
+}
+
+/* Delete tab style */
+.nav-tabs .nav-link.text-danger {
+    color: #dc3545 !important;
+}
+
+.nav-tabs .nav-link.text-danger:hover {
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
 }
