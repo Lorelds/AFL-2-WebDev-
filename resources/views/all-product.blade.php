@@ -7,13 +7,24 @@
             <div class="text-start">
                 <a href = "/" class="btn btn-primary btn-xl text-uppercase mb-4"><i class="fas fa-arrow-left"></i> Back to Home</a>
             </div>
-
         </div>
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase pd-5 mt-5">OUR PRODUCTS</h2>
                     <h3 class="section-subheading text-muted">Explore Our Collections</h3>
                 </div>
+                <form action="{{ route('products') }}" method="GET" class="mb-5">
+                    <div class="input-group">
+                    <input 
+                        type="text" 
+                        name="search" 
+                        class="form-control" 
+                        placeholder="Cari produk..." 
+                        value="{{ $search ?? '' }}"
+                    >
+                    <button type="submit" class="btn btn-dark">Cari</button>
+                </div>
+                </form>
                 
                 <div class="row g-5 justify-content-center ">
                     @foreach ($products as $product)

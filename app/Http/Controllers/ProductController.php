@@ -10,10 +10,14 @@ class ProductController extends Controller
 
     public function index()
     {
+        if($request->has('search')){
+            $products = Product::where('name', 'like', '%'.$request->search.'%')->get();
+        } else{
         $products = Product::with('reviews')->paginate(15); 
         return view('all-product', [
             'products' => $products 
         ]);
+    }
         
     }
     public function index1()
