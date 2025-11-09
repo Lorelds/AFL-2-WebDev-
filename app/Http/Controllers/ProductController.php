@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,12 +17,14 @@ class ProductController extends Controller
         ]);
         
     }
-    public function index1()
-    {
-        $products = Product::latest()->take(6)->get(); 
-        return view('homepage',[
-            'products' => $products 
-        ]);
-    }
+    public function index1() {
+    $products = Product::oldest()->with('reviews')->take(6)->get();
+    $reviews = Review::latest()->with('user','product')->take(3)->get();
+
+    return view('homepage', [
+        'products' => $products,
+        'reviews' => $reviews
+    ]);
+}
     
 }
