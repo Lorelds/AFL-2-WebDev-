@@ -41,11 +41,14 @@
                                 <a href="{{ route('profile.edit') }}" class="btn btn-warning btn-sm text-dark">
                                     Edit Profile
                                 </a>
+                                <a href="{{ route('reviews.create') }}" class="btn btn-primary btn-sm text-dark">
+                                    Create Review
+                                </a>
                             </div>
                         </div>
 
                         <div class="card-footer bg-transparent border-0 pt-0 pb-3 text-center">
-                            <small class="text-muted">Terakhir diperbarui:
+                            <small class="text-muted">Last Updated:
                                 {{ optional(Auth::user()->updated_at)->diffForHumans() ?? '-' }}</small>
                         </div>
                     </div>
