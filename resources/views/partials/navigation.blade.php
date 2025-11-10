@@ -36,6 +36,8 @@
                 @endguest
 
                 <li class="nav-item"><a class="nav-link" href="/dashboard">History</a></li>
+
+                
                 @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                 @else
