@@ -29,7 +29,12 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
+                @guest
+                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Reviews</a></li>
+                @else
                 <li class="nav-item"><a class="nav-link" href="/reviews">Reviews</a></li>
+                @endguest
+
                 <li class="nav-item"><a class="nav-link" href="/dashboard">History</a></li>
                 @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>

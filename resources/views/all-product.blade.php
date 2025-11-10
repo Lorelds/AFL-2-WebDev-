@@ -18,7 +18,7 @@
                     <h2 class="section-heading text-uppercase pd-5 mt-5">OUR PRODUCTS</h2>
                     <h3 class="section-subheading text-muted">Explore Our Collections</h3>
                 </div>
-                <form action="{{ route('products') }}" method="GET" class="mb-5">
+                <form action="{{ route('products.index') }}" method="GET" class="mb-5">
                     <div class="input-group">
                     <input 
                         type="text" 

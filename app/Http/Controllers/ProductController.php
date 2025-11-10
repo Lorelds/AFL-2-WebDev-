@@ -9,10 +9,13 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         if($request->has('search')){
-            $products = Product::where('name', 'like', '%'.$request->search.'%')->get();
+            $products = Product::where('name', 'like', '%'.$request->search.'%')->paginate(15);
+            return view('all-product', [
+            'products' => $products 
+        ]);
         } else{
         $products = Product::with('reviews')->paginate(15); 
         return view('all-product', [
