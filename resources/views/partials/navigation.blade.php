@@ -37,7 +37,14 @@
 
                 <li class="nav-item"><a class="nav-link" href="/dashboard">History</a></li>
 
-                
+                @auth
+                    @if (Auth::user()->status === 'admin')
+                        <li class="nav-item">
+                        <a class="nav-link " href="{{ route ('admin.page') }}">Admin Panel</a>
+                        </li>
+                    @endif
+                @endauth
+
                 @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                 @else

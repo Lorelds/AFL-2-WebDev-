@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\AllReviewController;
-use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Middleware\Admin;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomepageController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AllReviewController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 
 
@@ -17,9 +19,32 @@ Route::get('/reviews', [AllReviewController::class, 'index'])->name('reviews.ind
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
+
+
+// Halaman Admin
+Route::get('/admin', [AdminController::class, 'index'])
+    ->middleware(Admin::class)
+    ->name('admin.page');
+
+// ✅ Route untuk update produk (submit form)
+Route::patch('/admin/{id}', [AdminController::class, 'update'])->name('products.update');
+
+// ✅ Route untuk delete produk
+Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
+
+Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+
+Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+
+Route::post('/', [AdminController::class, 'store'])->name('admin.store');
+
+
+
+
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
