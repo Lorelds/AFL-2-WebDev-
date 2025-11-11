@@ -34,7 +34,6 @@
             </div>
         </form>
 
-        {{-- 🎯 Tombol Add New Product di Tengah --}}
         <div class="text-center mb-5">
             <a href="{{ route('admin.create') }}" class="btn btn-dark btn-xl text-uppercase px-5 py-3">
                 <i class="fas fa-plus-circle me-2"></i> Add New Product
@@ -75,13 +74,6 @@
                 </div>
             @endforeach
         </div>
-
-        {{-- Pagination (optional)
-        <div class="d-flex justify-content-center mt-5">
-            <nav aria-label="Pagination Produk" class="pagination-sm"> 
-                {{ $products->links('pagination::bootstrap-5') }}
-            </nav>
-        </div> --}}
     </div>
 </section>
 @endsection
