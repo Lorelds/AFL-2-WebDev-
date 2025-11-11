@@ -24,7 +24,6 @@ class AdminController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        // Hapus gambar jika ada
         if ($product->image && file_exists(public_path($product->image))) {
             unlink(public_path($product->image));
         }
@@ -40,7 +39,6 @@ class AdminController extends Controller
         return view('products.update', compact('product'));
     }
 
-    // ======== Fungsi UPDATE Produk ========
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
@@ -56,7 +54,6 @@ class AdminController extends Controller
         $product->price = $request->price;
         $product->description = $request->description;
 
-        // Jika user upload gambar baru
         if ($request->hasFile('image')) {
             if ($product->image && file_exists(public_path($product->image))) {
                 unlink(public_path($product->image));
@@ -71,7 +68,6 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Produk berhasil diperbarui!');
     }
 
-    // ======== 🆕 Tambah Produk Baru ========
     public function create()
     {
         return view('products.create');

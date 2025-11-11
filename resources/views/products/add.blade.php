@@ -1,9 +1,9 @@
-@extends("layouts.layout")
+{{-- @extends("layouts.layout")
 @section("title", "Tulis Review Baru")
 
 @section('content')
 
-{{-- Navigasi untuk user yang sudah login --}}
+{{-- Navigasi untuk user yang sudah login 
 @include('partials.navigation')
 
 <header class="masthead" style="background-image: url('{{ asset('assets/img/header-bg.jpg') }}'); padding-top:4rem; padding-bottom:2rem; filter:brightness(0.85);">
@@ -99,4 +99,4 @@
         </div>
     </div>
 </section>
-@endsection
+@endsection --}}

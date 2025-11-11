@@ -21,15 +21,12 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 
 
 
-// Halaman Admin
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware(Admin::class)
     ->name('admin.page');
 
-// ✅ Route untuk update produk (submit form)
 Route::patch('/admin/{id}', [AdminController::class, 'update'])->name('products.update');
 
-// ✅ Route untuk delete produk
 Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
 
 Route::get('/admin/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');

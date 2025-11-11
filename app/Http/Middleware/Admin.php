@@ -22,5 +22,6 @@ class Admin
         }
         
         abort(403, 'Unauthorized.');
+        return $next($request);
     }
 }
